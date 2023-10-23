@@ -115,5 +115,55 @@ export const useDeleteStore = defineStore('delete', () => {
         }
     };
 
-  return {  deleteTicket, concluiTicket, atualizaTicket, nome, login, ramal, patrimonio, local, informacao, ReturnConcluiTicket  }
+    function copyCardText(dados, tipo) {
+      let cardText = '';
+      let successMessage = 'Conteúdo copiado para a área de transferência.';
+  
+      switch (tipo) {
+          case 'chamado':
+              cardText = `Prezados, Sr(a). ${dados.nome} entrou em contato ${dados.informacao}\n
+              Nome: ${dados.nome}
+              Login: ${dados.login}
+              Ramal: ${dados.ramal}
+              Local: ${dados.local}
+              Patrimônio: ${dados.patrimonio}
+              `;
+              break;
+          case 'reiteracao':
+              cardText = `Senhor(a) ${dados.nome} entrou em contato requisitando a reiteração e brevidade no chamado SERVICEDESK-${dados.chamado}.
+              Login: ${dados.login}
+              Ramal: ${dados.ramal}
+              `;
+              break;
+  
+          case 'transferencia':
+              cardText = `Senhor(a) ${dados.nome} entrou em contato solicitando transferência de ligação para o(a) senhor(a) ${dados.destinatario}.
+              Ramal: ${dados.ramal}
+              `;
+              break;
+  
+          case 'queda':
+          cardText = `Senhor(a) Senhor(a) não identificado entrou em contato com o helpdesk no ramal 3416 e interrompeu a ligação antes do atendimento inicial.
+              Ramal: ${dados.ramal}
+              `;
+              break;
+          default:
+              console.error('Tipo de cartão desconhecido:', tipo);
+              successMessage = 'Erro ao copiar o conteúdo. Tipo de cartão desconhecido.';
+              break;
+      }
+  
+      navigator.clipboard.writeText(cardText)
+          .then(() => {
+              alert(successMessage);
+          })
+          .catch((error) => {
+              console.error('Erro ao copiar o conteúdo:', error);
+              alert('Erro ao copiar o conteúdo. Verifique se o navegador suporta essa funcionalidade.');
+          });
+      
+  }
+
+
+  return {  deleteTicket, concluiTicket, atualizaTicket, nome, login, ramal, patrimonio, local, informacao, ReturnConcluiTicket, copyCardText   }
 })
