@@ -115,6 +115,8 @@ export const useDeleteStore = defineStore('delete', () => {
         }
     };
 
+
+    const notification = ref(false)
     function copyCardText(dados, tipo) {
       let cardText = '';
       let successMessage = 'Conteúdo copiado para a área de transferência.';
@@ -155,7 +157,10 @@ export const useDeleteStore = defineStore('delete', () => {
   
       navigator.clipboard.writeText(cardText)
           .then(() => {
-              alert(successMessage);
+            notification.value = true;
+            setTimeout(() => {
+              notification.value = false;
+            }, 3000);
           })
           .catch((error) => {
               console.error('Erro ao copiar o conteúdo:', error);
@@ -165,5 +170,5 @@ export const useDeleteStore = defineStore('delete', () => {
   }
 
 
-  return {  deleteTicket, concluiTicket, atualizaTicket, nome, login, ramal, patrimonio, local, informacao, ReturnConcluiTicket, copyCardText   }
+  return {  deleteTicket, concluiTicket, atualizaTicket, nome, login, ramal, patrimonio, local, informacao, ReturnConcluiTicket, copyCardText, notification   }
 })
