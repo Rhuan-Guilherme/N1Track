@@ -2,9 +2,9 @@
 import { ref, onMounted } from 'vue'
 import { initFlowbite } from 'flowbite'
 import { useFiltroStore } from '@/stores/filtroTicket'
-import { useDeleteStore } from '@/stores/optionsTicket'
+import { useOptionStore } from '@/stores/optionsTicket'
 const storeFiltro = useFiltroStore()
-const deleteStore = useDeleteStore()
+const deleteStore = useOptionStore()
 
 
 onMounted(() => {

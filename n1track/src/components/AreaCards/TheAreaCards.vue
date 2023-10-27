@@ -1,26 +1,23 @@
 <script setup>
 import { useReturnStore } from '@/stores/returnTickets'
 import { useLoginStore } from '@/stores/login';
-import { useDeleteStore } from '@/stores/optionsTicket'
+import { useOptionStore } from '@/stores/optionsTicket'
 import { ref, onMounted } from 'vue'
 import { initFlowbite } from 'flowbite'
+import Chamado from './cardsOption/TheChamado.vue';
+import Reiteracao from './cardsOption/TheReiteracao.vue';
+import Transferencia from './cardsOption/TheTransferencia.vue';
+import Queda from './cardsOption/TheQueda.vue'
+import Tag from '../bedges/TagTickets.vue';
+import CopyNotify from '../bedges/CopyNotify.vue';
 
 
 onMounted(() => {
     initFlowbite();
 })
 
-let modal = ref(false)
 
-function openModal() {
-    modal.value = true
-}
-
-function doneModal() {
-    modal.value = false
-}
-
-const deleteStore = useDeleteStore()
+const OptionStore = useOptionStore()
 const loginSotre = useLoginStore()
 const store = useReturnStore()
 
@@ -29,8 +26,8 @@ store.fetchUserData(loginSotre.dadosUsuario.id)
 </script>
 
 <template>
-    <div v-if="deleteStore.notification" class="elemento-animado fixed flex items-center w-full max-w-xs p-3 text-gray-500 bg-white divide-x divide-gray-200 rounded-lg top-5 right-4 shadow-fundo dark:shadow-lg  z-40 dark:text-cinza-200 space-x dark:bg-cinza-700 border-2 border-cinza-400">
-        <div class="text-md transition-opacity font-bold">Copiado com sucesso</div>
+    <div v-if="OptionStore.notification">
+      <CopyNotify />
     </div>
 
     
@@ -39,93 +36,70 @@ store.fetchUserData(loginSotre.dadosUsuario.id)
         <div v-for="dados in store.userData" :key="dados.id" :class="{ 'ativado': dados.status == 'Fechado' }"
             class="fundoCard text-white p-4 max-w-xs w-full relative ">
             
-            <button @click="deleteStore.ReturnConcluiTicket(dados.id)" v-if="dados.status == 'Fechado'" class="absolute inline-flex items-center justify-center w-6 h-6 font-bold hover:scale-125 text-white hover:bg-red-500  bg-green-500 rounded-md -top-2 -right-2 ">
+            <button @click="OptionStore.ReturnConcluiTicket(dados.id)" v-if="dados.status == 'Fechado'" class="absolute inline-flex items-center justify-center w-6 h-6 font-bold hover:scale-125 text-white hover:bg-red-500  bg-green-500 rounded-md -top-2 -right-2 ">
                 <span class="material-symbols-outlined">done</span>
             </button>
 
             <div :class="{ 'ativoDentro': dados.status == 'Fechado' }">
-                <div v-if="dados.tipo == 'chamado'" class="flex flex-col gap-3">
+                <div  class="flex flex-col gap-3">
                     <div class="flex flex-col gap-2">
-                        <div class="text-xs text-cinza-500">
+                        <div class="text-xs text-cinza-200 font-semibold">
                             {{ dados.created_at }}
                         </div>
                         <div class="flex items-center gap-2">
                             <div class="flex ">{{ dados.nome }} - {{ dados.ramal }}</div>
-                            <div class="specChamado w-auto px-2 h-5 text-[12px] flex items-center justify-center gap-2 font-bold" :class="{ 'econdeAtivo': dados.status == 'Fechado' }"><div class="bolChamado w-2 h-2 rounded-full " :class="{ 'econdeAtivo': dados.status == 'Fechado' }"></div>Chamado</div>
+                            <div>
+                                <Tag
+                                    :tipo="dados.tipo"
+                                    :status="dados.status"
+                                />
+                            </div>
                         </div>
                     </div>
-                    <div class="bg-cinza-300 h-[1px] "></div>
+                    <div class="bg-cinza-800 h-[1px] "></div>
                     <div class="flex flex-col gap-2" >
-                        <p class="">Prezados, Sr(a). {{ dados.nome }} entrou em contato {{ dados.informacao }}</p>
-                        <p>Nome: {{ dados.nome }}</p>
-                        <p>Login: {{ dados.login }}</p>
-                        <p>Ramal: {{ dados.ramal }}</p>
-                        <p>Local: {{ dados.local }}</p>
-                        <p>Patrimônio: {{ dados.patrimonio }}</p>
+                        <Chamado v-if="dados.tipo == 'chamado'"
+                            :nome="dados.nome"
+                            :informacao="dados.informacao"
+                            :login="dados.login"
+                            :ramal="dados.ramal"
+                            :local="dados.local"
+                            :patrimonio="dados.patrimonio"
+                        />
+
+                        <Reiteracao  
+                            v-if="dados.tipo == 'reiteracao'"    
+                            :nome="dados.nome"
+                            :chamado="dados.chamado"
+                            :login="dados.login"
+                            :ramal="dados.ramal"
+                        />
+
+                        <Transferencia
+                            v-if="dados.tipo == 'transferencia'"
+                            :nome="dados.nome"
+                            :destinatario="dados.destinatario"
+                            :login="dados.login"
+                            :ramal="dados.ramal"
+                        />
+
+                        <Queda 
+                            v-if="dados.tipo == 'queda'"
+                            :ramal="dados.ramal"
+                        />
                     </div>
+
+                    <div :class="{ 'esconder': dados.status == 'Fechado' }" class="bg-cinza-800 h-[1px] "></div>
                 </div>
 
-
-                <div v-if="dados.tipo == 'reiteracao'" class="flex flex-col gap-3">
-                    <div class="flex flex-col gap-2">
-                        <div class="text-xs text-cinza-500">
-                            {{ dados.created_at }}
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="flex ">{{ dados.nome }} - {{ dados.ramal }}</div>
-                            <div class="specReiteracao w-auto px-2 h-5 text-[12px] flex items-center justify-center gap-2 font-bold" :class="{ 'econdeAtivo': dados.status == 'Fechado' }"><div class="bolReiteracao w-2 h-2 rounded-full " :class="{ 'econdeAtivo': dados.status == 'Fechado' }"></div>Reiteração</div>
-                        </div>
-                    </div>
-                    <div class="bg-cinza-300 h-[1px] "></div>
-                    <div class="flex flex-col gap-2" >
-                        <p class="">Senhor(a) {{ dados.nome }} entrou em contato requisitando a reiteração e brevidade no chamado SERVICEDESK-{{ dados.chamado }}.</p>
-                        <p>Login: {{ dados.login }}</p>
-                        <p>Ramal: {{ dados.ramal }}</p>
-                    </div>
-                </div>
-
-
-                <div v-if="dados.tipo == 'transferencia'" class="flex flex-col gap-3">
-                    <div class="flex flex-col gap-2">
-                        <div class="text-xs text-cinza-500">
-                            {{ dados.created_at }}
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="flex ">{{ dados.nome }} - {{ dados.ramal }}</div>
-                            <div class="specTransferencia w-auto px-2 h-5 text-[12px] flex items-center justify-center gap-2 font-bold" :class="{ 'econdeAtivo': dados.status == 'Fechado' }"><div class="bolTransferencia w-2 h-2 rounded-full animate-pulse" :class="{ 'econdeAtivo': dados.status == 'Fechado' }"></div>Transferencia</div>
-                        </div>
-                    </div>
-                    <div class="bg-cinza-300 h-[1px] "></div>
-                    <div class="flex flex-col gap-2" >
-                        <p class="">Senhor(a) {{ dados.nome }} entrou em contato solicitando transferência de ligação para o(a) senhor(a) {{ dados.destinatario }} </p>
-                        <p>Ramal: {{ dados.ramal }}</p>
-                    </div>
-                </div>
-
-
-                <div v-if="dados.tipo == 'queda'" class="flex flex-col gap-3">
-                    <div class="flex flex-col gap-2">
-                        <div class="text-xs text-cinza-500">
-                            {{ dados.created_at }}
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="flex ">{{ dados.ramal }}</div>
-                            <div class="specQueda w-auto px-2 h-5 text-[12px] flex items-center justify-center gap-2 font-bold" :class="{ 'econdeAtivo': dados.status == 'Fechado' }"><div class="bolQueda w-2 h-2 rounded-full " :class="{ 'econdeAtivo': dados.status == 'Fechado' }"></div>Queda</div>
-                        </div>
-                    </div>
-                    <div class="bg-cinza-300 h-[1px] "></div>
-                    <div class="flex flex-col gap-2" >
-                        <p class="">Senhor(a) Senhor(a) não identificado entrou em contato com o helpdesk no ramal 3416 e interrompeu a ligação antes do atendimento inicial.</p>
-                        <p>Ramal: {{ dados.ramal }}</p>
-                    </div>
-                </div>
             </div>
 
+            
 
             <div class="flex gap-2 justify-center fundoOptionCards p-2 mt-3 " :class="{ 'esconder': dados.status == 'Fechado' }">
-                <button @click="deleteStore.deleteTicket(dados.id)"  type="button" class="fundoOptions py-2 px-4">Deletar</button>
-                <button @click="deleteStore.copyCardText(dados, dados.tipo)" type="button" class="fundoOptions py-2 px-4">Copiar</button>
-                <button  @click="deleteStore.concluiTicket(dados.id)" type="button" class="fundoOptions py-2 px-4">Concluir</button>
+                <button @click="OptionStore.deleteTicket(dados.id)"  type="button" class="optionButton ">Deletar</button>
+                <button @click="OptionStore.copyCardText(dados, dados.tipo)" type="button" class="optionButton">Copiar</button>
+                <button  @click="OptionStore.concluiTicket(dados.id)" type="button" class="optionButton">Concluir</button>
             </div>
 
             
@@ -135,117 +109,34 @@ store.fetchUserData(loginSotre.dadosUsuario.id)
 </template>
 
 <style scoped>
-.fundoOptions{
-    border-radius: 6px;
-    background: rgba(41, 41, 41, 0.60);
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
-}
-
-.fundoOptions:hover{
-    background: #000;
+.optionButton{
+    @apply text-cinza-100 rounded-md shadow-[0_0_6px_0_rgba(0,0,0,0.3)] bg-cinza-900 hover:bg-cinza-950 transition-all font-semibold py-2 px-4;
 }
 
 .fundoOptionCards{
-    border-radius: 6px;
-    background: rgba(41, 41, 41, 0.60);
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
+   @apply bg-[#29292999] rounded-md shadow-[0_0_6px_0_rgba(0,0,0,0.3)] ;
 }
 
-.bolQueda{
-    background-color: #CE7C5A;
-    filter: drop-shadow(0px 0px 2px #CE7C5A);
-}
-
-.specQueda{
-    border-radius: 5px;
-    border: 1px solid #CE755A;
-    color: #DBC4BA;
-    background: rgba(206, 110, 90, 0.30);
-}
-
-.bolTransferencia{
-    background-color: #5ACEB9;
-    filter: drop-shadow(0px 0px 2px #5ACEB9);
-}
-
-.specTransferencia{
-    border-radius: 5px;
-    border: 1px solid #5ACEB9;
-    background: rgba(90, 206, 185, 0.30);
-    color: #BFD7D2;
-}
-
-.bolReiteracao{
-    background-color: #9B5ACE;
-    filter: drop-shadow(0px 0px 2px #9B5ACE);
-}
-
-.specReiteracao{
-    border-radius: 5px;
-    border: 1px solid #9B5ACE;
-    background: rgba(155, 90, 206, 0.30);
-    color: #BDA2D1;
-}
-
-.bolChamado{
-    background-color: #5A78CE;
-    filter: drop-shadow(0px 0px 2px #5A78CE);
-}
-
-.specChamado{
-    border-radius: 5px;
-    border: 2px solid #5A78CE;
-    background: rgba(90, 120, 206, 0.30);
-    color: #B2BCD9;
-}
 
 .fundo{
-    border-radius: 10px;
-    background: #3D3D3D;
-    box-shadow: 0px 0px 15px 0px rgba(20, 20, 20, 0.25);
+    @apply bg-[#3D3D3D] rounded-lg shadow-[0_0_15px_0_rgba(0,0,0,0.2)];
 }
 
 .fundoCard{
-    border-radius: 10px;
-    background: #141414;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.40);
-}
-
-.econdeAtivo{
-    background: rgba(110, 110, 110, 0.3);
-    border: 1px solid gray;
-    color: #888888;
+    @apply bg-[#141414] rounded-lg shadow-[0_0_6px_0_rgba(0,0,0,0.2)] border-2 border-cinza-800;
 }
 
 .esconder{
-    display: none;
+    @apply hidden;
 }
 
 .ativado {
-    @apply border-2 border-green-500; 
+    @apply border-2 border-green-500 opacity-70 ; 
 }
 
 .ativoDentro{
-    @apply opacity-70;
+    @apply opacity-80;
 }
 
-@keyframes fade {
-  0% {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  50% {
-    opacity: 1;
-    transform: translateX(0px);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-}
-
-.elemento-animado {
-  animation: fade 3s ease-in-out forwards;
-}
 
 </style>
