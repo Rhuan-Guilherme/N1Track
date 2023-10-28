@@ -1,5 +1,6 @@
 <script setup>
 import { useReturnStore } from '@/stores/returnTickets'
+import { useUpdateStore } from '@/stores/updateTicket'
 import { useLoginStore } from '@/stores/login';
 import { useOptionStore } from '@/stores/optionsTicket'
 import { ref, onMounted } from 'vue'
@@ -10,6 +11,7 @@ import Transferencia from './cardsOption/TheTransferencia.vue';
 import Queda from './cardsOption/TheQueda.vue'
 import Tag from '../bedges/TagTickets.vue';
 import CopyNotify from '../bedges/CopyNotify.vue';
+import ModalEdit from './ModalEdit.vue'
 
 
 onMounted(() => {
@@ -19,9 +21,12 @@ onMounted(() => {
 
 const OptionStore = useOptionStore()
 const loginSotre = useLoginStore()
+const updateTicket = useUpdateStore()
 const store = useReturnStore()
 
 store.fetchUserData(loginSotre.dadosUsuario.id)
+
+
 
 </script>
 
@@ -39,6 +44,12 @@ store.fetchUserData(loginSotre.dadosUsuario.id)
             <button @click="OptionStore.ReturnConcluiTicket(dados.id)" v-if="dados.status == 'Fechado'" class="absolute inline-flex items-center justify-center w-6 h-6 font-bold hover:scale-125 text-white hover:bg-red-500  bg-green-500 rounded-md -top-2 -right-2 ">
                 <span class="material-symbols-outlined">done</span>
             </button>
+
+            <button  @click="OptionStore.copyCardText(dados, dados.tipo)" v-if="dados.status == 'Aberto'" class="absolute inline-flex items-center justify-center w-auto px-2 py-0.5 font-bold text-whiterounded-md top-2 right-4 bg-[#303030] border border-cinza-700 rounded-md hover:scale-105 ">
+                <span class="material-symbols-outlined text-base text-cinza-100">file_copy</span>
+            </button>
+
+            
 
             <div :class="{ 'ativoDentro': dados.status == 'Fechado' }">
                 <div  class="flex flex-col gap-3">
@@ -94,21 +105,22 @@ store.fetchUserData(loginSotre.dadosUsuario.id)
 
             </div>
 
-            
 
             <div class="flex gap-2 justify-center fundoOptionCards p-2 mt-3 " :class="{ 'esconder': dados.status == 'Fechado' }">
                 <button @click="OptionStore.deleteTicket(dados.id)"  type="button" class="optionButton ">Deletar</button>
-                <button @click="OptionStore.copyCardText(dados, dados.tipo)" type="button" class="optionButton">Copiar</button>
+                <button  @click="updateTicket.openEditModal(dados)" type="button" class="optionButton ">Editar</button>
                 <button  @click="OptionStore.concluiTicket(dados.id)" type="button" class="optionButton">Concluir</button>
             </div>
 
-            
-
         </div>
     </div>
+
+   <ModalEdit />
+
 </template>
 
 <style scoped>
+
 .optionButton{
     @apply text-cinza-100 rounded-md shadow-[0_0_6px_0_rgba(0,0,0,0.3)] bg-cinza-900 hover:bg-cinza-950 transition-all font-semibold py-2 px-4;
 }

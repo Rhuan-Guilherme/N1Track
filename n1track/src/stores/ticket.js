@@ -35,9 +35,7 @@ export const useTicketStore = defineStore('ticket', () => {
       
       dateTime.value = `${dia}/${mes}/${ano} às ${hora}:${minutoFormatado}`;
   
-
-
-        try {
+      try {
           const response = await axios.post("https://n1track.com/ticket.php", {
             nome: nome.value,
             login: login.value,
@@ -63,15 +61,13 @@ export const useTicketStore = defineStore('ticket', () => {
           local.value = ""
           chamado.value = ""
           destinatario.value = ""
-          
-        
-          
         } catch (error) {
            console.error("erro ao cadastrar: ", error)
         }finally {
           returnStore.fetchUserData(loginSotre.dadosUsuario.id)
         }
     };
+
 
   return { cadastraTicket, retorno, nome, login, ramal, patrimonio, informacao, local, userId, tipo, destinatario, chamado, criador  }
 })
