@@ -42,19 +42,11 @@ const store = useTicketStore()
 
 <style scoped>
 
-
 .label{
-   color: #B8B8B8;
-   font-style: normal;
-   font-weight: 600;
-   line-height: 98%; 
-   margin-bottom: 5px;
+   @apply dark:text-[#B8B8B8] mb-1 font-semibold ;
 }
 
 .input {
-   color: white;
-   border-radius: 10px;
-   background: #292929;
-   border: none;
+   @apply text-fundo dark:text-white rounded-lg bg-cinza-50 border border-cinza-300 dark:bg-[#292929] dark:border-none;
 }
 </style>

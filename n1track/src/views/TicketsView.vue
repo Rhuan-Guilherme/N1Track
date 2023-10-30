@@ -22,7 +22,7 @@ const dados = loginStore.dadosUsuario
       <div class="w-3/7">
          <SelectForm />
       </div>
-      <div class="fundoForm w-5/6 mt-7 p-5">
+      <div class="fundoForm ">
          <Formulario v-if="storeSelect.estado === 'chamado'" />
          <Reiteracao v-if="storeSelect.estado === 'reiteracao'" />
          <Transferencia v-if="storeSelect.estado === 'transferencia'" />
@@ -38,8 +38,6 @@ const dados = loginStore.dadosUsuario
 
 <style scoped>
 .fundoForm{
-   border-radius: 10px;
-   background: #525252;
-   box-shadow: 0px 0px 15px 0px rgba(20, 20, 20, 0.25);
+   @apply rounded-lg dark:bg-[#525252] bg-cinza-200 border dark:border-none border-cinza-300 w-5/6 mt-7 p-5 dark:shadow-[0_0_15px_0_rgba(20,20,20,0.25)];
 }
 </style>
