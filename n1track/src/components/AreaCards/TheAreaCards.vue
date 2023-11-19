@@ -45,8 +45,8 @@ store.fetchUserData(loginSotre.dadosUsuario.id)
                 <span class="material-symbols-outlined">done</span>
             </button>
 
-            <button  @click="OptionStore.copyCardText(dados, dados.tipo)" v-if="dados.status == 'Aberto'" class="absolute inline-flex items-center justify-center w-auto px-2 py-0.5 font-bold text-whiterounded-md top-2 right-4 dark:bg-[#303030] bg-cinza-200 border dark:border-cinza-700 border-cinza-300 rounded-md hover:scale-105 ">
-                <span class="material-symbols-outlined text-base dark:text-cinza-100 text-cinza-700">file_copy</span>
+            <button @click="OptionStore.deleteTicket(dados.id)" v-if="dados.status == 'Aberto'" class="absolute inline-flex items-center justify-center w-auto px-1  font-bold text-whiterounded-md top-2 right-2 dark:bg-[#303030] bg-cinza-200 border dark:border-cinza-700 border-cinza-300 rounded-md hover:scale-105 hover:bg-red-600 hover:text-white dark:text-cinza-100 text-cinza-700 dark:hover:bg-red-600 dark:hover:text-white">
+                <span class="material-symbols-outlined text-base">close</span>
             </button>
 
             
@@ -107,8 +107,8 @@ store.fetchUserData(loginSotre.dadosUsuario.id)
 
 
             <div class="flex gap-2 justify-center fundoOptionCards p-2 mt-3 " :class="{ 'esconder': dados.status == 'Fechado' }">
-                <button @click="OptionStore.deleteTicket(dados.id)"  type="button" class="optionButton ">Deletar</button>
                 <button  @click="updateTicket.openEditModal(dados)" type="button" class="optionButton ">Editar</button>
+                <button @click="OptionStore.copyCardText(dados, dados.tipo)"   type="button" class="optionButton ">Copiar</button>
                 <button  @click="OptionStore.concluiTicket(dados.id)" type="button" class="optionButton">Concluir</button>
             </div>
 
@@ -135,7 +135,7 @@ store.fetchUserData(loginSotre.dadosUsuario.id)
 }
 
 .fundoCard {
-    @apply dark:text-white p-4 max-w-xs w-full relative bg-white dark:bg-[#141414] rounded-lg dark:shadow-[0_0_6px_0_rgba(0,0,0,0.2)] border border-cinza-300 dark:border-cinza-800;
+    @apply dark:text-white p-4 max-w-xs w-full relative bg-white dark:bg-[#141414] rounded-lg dark:shadow-[0_0_6px_0_rgba(0,0,0,0.2)] border  dark:border-cinza-800;
 }
 
 .esconder{
@@ -143,7 +143,7 @@ store.fetchUserData(loginSotre.dadosUsuario.id)
 }
 
 .ativado {
-    @apply border-2 border-green-500 opacity-70 ; 
+    @apply border border-green-500 dark:border-green-500  opacity-70 ; 
 }
 
 .ativoDentro{
