@@ -39,14 +39,14 @@ store.fetchUserData(loginSotre.dadosUsuario.id)
     <div class="fundo w-11/12 h-auto p-3 flex flex-wrap items-center justify-center gap-3 ">
         
         <div v-for="dados in store.userData" :key="dados.id" :class="{ 'ativado': dados.status == 'Fechado' }"
-            class="fundoCard text-white p-4 max-w-xs w-full relative ">
+            class="fundoCard ">
             
             <button @click="OptionStore.ReturnConcluiTicket(dados.id)" v-if="dados.status == 'Fechado'" class="absolute inline-flex items-center justify-center w-6 h-6 font-bold hover:scale-125 text-white hover:bg-red-500  bg-green-500 rounded-md -top-2 -right-2 ">
                 <span class="material-symbols-outlined">done</span>
             </button>
 
-            <button  @click="OptionStore.copyCardText(dados, dados.tipo)" v-if="dados.status == 'Aberto'" class="absolute inline-flex items-center justify-center w-auto px-2 py-0.5 font-bold text-whiterounded-md top-2 right-4 bg-[#303030] border border-cinza-700 rounded-md hover:scale-105 ">
-                <span class="material-symbols-outlined text-base text-cinza-100">file_copy</span>
+            <button  @click="OptionStore.copyCardText(dados, dados.tipo)" v-if="dados.status == 'Aberto'" class="absolute inline-flex items-center justify-center w-auto px-2 py-0.5 font-bold text-whiterounded-md top-2 right-4 dark:bg-[#303030] bg-cinza-200 border dark:border-cinza-700 border-cinza-300 rounded-md hover:scale-105 ">
+                <span class="material-symbols-outlined text-base dark:text-cinza-100 text-cinza-700">file_copy</span>
             </button>
 
             
@@ -54,7 +54,7 @@ store.fetchUserData(loginSotre.dadosUsuario.id)
             <div :class="{ 'ativoDentro': dados.status == 'Fechado' }">
                 <div  class="flex flex-col gap-3">
                     <div class="flex flex-col gap-2">
-                        <div class="text-xs text-cinza-200 font-semibold">
+                        <div class="text-xs dark:text-cinza-200 font-semibold">
                             {{ dados.created_at }}
                         </div>
                         <div class="flex items-center gap-2">
@@ -122,20 +122,20 @@ store.fetchUserData(loginSotre.dadosUsuario.id)
 <style scoped>
 
 .optionButton{
-    @apply text-cinza-100 rounded-md shadow-[0_0_6px_0_rgba(0,0,0,0.3)] bg-cinza-900 hover:bg-cinza-950 transition-all font-semibold py-2 px-4;
+    @apply dark:text-cinza-100 bg-cinza-200 hover:bg-cinza-50 rounded-md dark:shadow-[0_0_6px_0_rgba(0,0,0,0.3)] dark:bg-cinza-900 dark:hover:bg-cinza-950 transition-all font-semibold py-2 px-4;
 }
 
 .fundoOptionCards{
-   @apply bg-[#29292999] rounded-md shadow-[0_0_6px_0_rgba(0,0,0,0.3)] ;
+   @apply dark:bg-[#29292999] bg-cinza-100 rounded-md dark:shadow-[0_0_6px_0_rgba(0,0,0,0.3)] ;
 }
 
 
 .fundo{
-    @apply bg-[#3D3D3D] rounded-lg shadow-[0_0_15px_0_rgba(0,0,0,0.2)];
+    @apply bg-cinza-200 dark:bg-[#3D3D3D] rounded-lg shadow-[0_0_15px_0_rgba(0,0,0,0.06)] dark:shadow-[0_0_15px_0_rgba(0,0,0,0.2)];
 }
 
-.fundoCard{
-    @apply bg-[#141414] rounded-lg shadow-[0_0_6px_0_rgba(0,0,0,0.2)] border-2 border-cinza-800;
+.fundoCard {
+    @apply dark:text-white p-4 max-w-xs w-full relative bg-white dark:bg-[#141414] rounded-lg dark:shadow-[0_0_6px_0_rgba(0,0,0,0.2)] border border-cinza-300 dark:border-cinza-800;
 }
 
 .esconder{

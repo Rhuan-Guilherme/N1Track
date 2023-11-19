@@ -10,7 +10,7 @@ const store = useTicketStore()
       <div>
          <form @submit.prevent="store.cadastraTicket('transferencia')" class="flex flex-col gap-6">
            
-            <div class="flex gap-3">
+            <div class="flex flex-col gap-3 md:flex-row">
                <div class="flex flex-col w-full">
                   <label class="label" for="nome">Nome do Usuário</label>
                   <input v-model="store.nome" id="nome" class="input h-10" type="text">
@@ -37,20 +37,11 @@ const store = useTicketStore()
 </template>
 
 <style scoped>
-
-
 .label{
-   color: #B8B8B8;
-   font-style: normal;
-   font-weight: 600;
-   line-height: 98%; 
-   margin-bottom: 5px;
+   @apply dark:text-[#B8B8B8] mb-1 font-semibold ;
 }
 
 .input {
-   color: white;
-   border-radius: 10px;
-   background: #292929;
-   border: none;
+   @apply text-fundo dark:text-white rounded-lg bg-cinza-50 border border-cinza-300 dark:bg-[#292929] dark:border-none;
 }
 </style>

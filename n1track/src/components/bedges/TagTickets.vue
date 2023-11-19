@@ -41,10 +41,11 @@ let props = defineProps({
 }
 
 .specQueda{
+    @apply dark:text-[#dbbbba] text-[#9a3232];
+
     border-radius: 5px;
     border: 1px solid #CE755A;
-    color: #DBC4BA;
-    background: rgba(206, 110, 90, 0.30);
+    background: rgba(206, 90, 90, 0.3);
 }
 
 .bolTransferencia{
@@ -53,10 +54,12 @@ let props = defineProps({
 }
 
 .specTransferencia{
+    @apply dark:text-[#BFD7D2] text-[#2d9582];
+
     border-radius: 5px;
     border: 1px solid #5ACEB9;
     background: rgba(90, 206, 185, 0.30);
-    color: #BFD7D2;
+
 }
 
 .bolReiteracao{
@@ -65,10 +68,12 @@ let props = defineProps({
 }
 
 .specReiteracao{
+    @apply dark:text-[#BDA2D1] text-[#9B5ACE];
+
     border-radius: 5px;
     border: 1px solid #9B5ACE;
     background: rgba(155, 90, 206, 0.30);
-    color: #BDA2D1;
+
 }
 
 .bolChamado{
@@ -77,10 +82,12 @@ let props = defineProps({
 }
 
 .specChamado{
+    @apply dark:text-[#B2BCD9] text-[#5A78CE];
+
     border-radius: 5px;
     border: 2px solid #5A78CE;
     background: rgba(90, 120, 206, 0.30);
-    color: #B2BCD9;
+    color: ;
 }
 
 .econdeAtivo{
