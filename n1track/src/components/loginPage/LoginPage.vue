@@ -16,10 +16,11 @@ const loginStore = useLoginStore();
       <div>
         <form @submit.prevent="loginStore.logaUsuario" class="flex flex-col gap-8">
           <div>
-            <input v-model="loginStore.email" type="text" placeholder="Email" class="input">
+            <input  v-model="loginStore.email" type="text" placeholder="Email" class="input" :class="{ 'notification': loginStore.notification == true }">
           </div>
           <div>
-            <input v-model="loginStore.senha" type="password" placeholder="Senha" class="input">
+            <input v-model="loginStore.senha" type="password" placeholder="Senha" class="input" :class="{ 'notification': loginStore.notification == true }">
+            <p v-if="loginStore.notification" class="mt-4 text-sm text-center text-cinza-300">E-mail ou senha inválidos! Não tem cadastro? <span @click="Switch.toggle"  class="text-azul-600 underline ml-1 cursor-pointer">Cadastre-se</span></p>
           </div>
           <div>
             <button type="submit" class="h-14 w-40 bg-gradient-to-t from-[#0449A4] to-[#006EFF] rounded-full text-lg text-cinza-100 font-bold">
@@ -35,7 +36,11 @@ const loginStore = useLoginStore();
 <style scoped>
 
 .input{
-  @apply h-14 w-96 rounded-full bg-cinza-900 border-none text-lg text-cinza-200;
+  @apply h-14 w-96 rounded-full bg-cinza-900 border-transparent text-lg text-cinza-200;
+}
+
+.notification{
+  @apply border border-red-500 ;
 }
 
 </style>

@@ -33,10 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ];
             echo json_encode($response);
         } else {
-            echo "Credenciais inválidas";
+            echo "E-mail ou senha inválidos!";
         }
     } else {
-        echo "Usuário não encontrado";
+        echo "E-mail ou senha inválidos!";
     }
 }
 

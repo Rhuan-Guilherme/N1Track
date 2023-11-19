@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router';
 
 export const useLoginStore = defineStore('login', () => {
     const router = useRouter()
+    const notification = ref(false)
     const loading = ref(true)
     const email = ref('')
     const senha = ref('')
@@ -29,17 +30,20 @@ export const useLoginStore = defineStore('login', () => {
           email.value = ""
           senha.value = ""
 
-          if(response.data != 'Usuário não encontrado'){
+          if(response.data != 'E-mail ou senha inválidos!'){
+            notification.value = false
             localStorage.setItem('autenticado', JSON.stringify(true))
             localStorage.setItem('dadosUsuario', JSON.stringify(response.data))
             router.push({ name: 'tickets' });
             autenticado.value = true
           } else{
             autenticado.value = false
+            notification.value = true
           }
 
           dadosUsuario.value = response.data
           loading.value = true
+          console.log(response.data);
         } catch (error) {
            console.error("erro ao cadastrar: ", error)
         } finally{
@@ -57,5 +61,5 @@ export const useLoginStore = defineStore('login', () => {
     
   
 
-  return { logaUsuario, email, senha, dadosUsuario, autenticado, fazLogout, loading }
+  return { logaUsuario, email, senha, dadosUsuario, autenticado, fazLogout, loading, notification }
 })

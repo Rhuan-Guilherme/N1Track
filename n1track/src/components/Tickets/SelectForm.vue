@@ -11,7 +11,7 @@ const storeSelect = useSelectStore()
 
     <button @click="storeSelect.reiteracao" class="fundoBotao botao bg-[#F3F3F3] dark:bg-[#3D3D3D] dark:text-[#A3A3A3] dark:hover:bg-[#252525]" :class="{ 'ativado': storeSelect.estado == 'reiteracao' }"><span class="material-symbols-outlined">notification_important</span><span class="span">Reiteração</span></button>
 
-    <button @click="storeSelect.transferencia" class="fundoBotao botao bg-[#F3F3F3] dark:bg-[#3D3D3D] dark:text-[#A3A3A3] dark:hover:bg-[#252525]" :class="{ 'ativado': storeSelect.estado == 'transferencia' }" ><span class="material-symbols-outlined">phone_callback</span><sapn class="span">Trasnferencia</sapn></button>
+    <button @click="storeSelect.transferencia" class="fundoBotao botao bg-[#F3F3F3] dark:bg-[#3D3D3D] dark:text-[#A3A3A3] dark:hover:bg-[#252525]" :class="{ 'ativado': storeSelect.estado == 'transferencia' }" ><span class="material-symbols-outlined">phone_callback</span><sapn class="span">Transferência</sapn></button>
     
     <button @click="storeSelect.queda" class="fundoBotao botao bg-[#F3F3F3] dark:bg-[#3D3D3D] dark:text-[#A3A3A3] dark:hover:bg-[#252525]" :class="{ 'ativado': storeSelect.estado == 'queda' }"><span class="material-symbols-outlined">phone_missed</span><span class="span">Queda de ligação</span></button>
     </div>
