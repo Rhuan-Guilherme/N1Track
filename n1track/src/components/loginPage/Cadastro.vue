@@ -26,6 +26,26 @@ const Switch = useSwitchStore()
             <input v-model="cadastroStore.senha" type="password" placeholder="Senha" class="input">
           </div>
           <div>
+            <ul class="grid w-full gap-3 md:grid-cols-2">
+                <li>
+                    <input v-model="cadastroStore.cargo" type="radio" id="hosting-small" name="hosting" value="n1" class="hidden peer" required>
+                    <label for="hosting-small" class="inline-flex items-center justify-center w-full p-4 border rounded-full cursor-pointer hover:text-gray-300 border-cinza-900 peer-checked:text-blue-500 peer-checked:border-blue-600  text-gray-400 bg-cinza-900 hover:bg-gray-700">                           
+                        <div class="block">
+                            <div>Analista N1</div>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <input v-model="cadastroStore.cargo" type="radio" id="hosting-big" name="hosting" value="n2" class="hidden peer">
+                    <label for="hosting-big" class="inline-flex items-center justify-center w-full p-4 border rounded-full cursor-pointer hover:text-gray-300 border-cinza-900 peer-checked:text-blue-500 peer-checked:border-blue-600  text-gray-400 bg-cinza-900 hover:bg-gray-700">
+                        <div class="block">
+                          <div>Analista N2</div>
+                        </div>
+                    </label>
+                </li>
+            </ul>
+          </div>
+          <div>
             <button type="submit" class="h-14 w-40 bg-gradient-to-t from-[#0449A4] to-[#006EFF] rounded-full text-lg text-cinza-100 font-bold">
               Cadastre-se
             </button>

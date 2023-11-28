@@ -30,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 "id" => $row["id"],
                 "nome" => $row["nome"],
                 "email" => $row["email"],
+                "cargo" => $row["cargo"],
             ];
             echo json_encode($response);
         } else {

@@ -3,7 +3,7 @@ header("Access-Control-Allow-Origin: *"); // Permitir que qualquer origem acesse
 header("Access-Control-Allow-Methods: POST"); // Permitir apenas métodos POST
 header("Access-Control-Allow-Headers: Content-Type"); // Permitir apenas o cabeçalho Content-Type
 
-require 'ConectBanco/bancoUsuarios.php';
+require './apiphp/ConectBanco/bancoUsuarios.php';
 
 if ($conexao->connect_error) {
     die("Conexão falhou: " . $conexao->connect_error);
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $destinatario = $data->destinatario;
 
 
-    $sql = "INSERT INTO tickets (user_id, criador, nome, login, ramal, patrimonio, informacao, local, chamado, destinatario, status, created_at, tipo, secao) VALUES ('$userId',  '$criador', '$nome','$login', '$ramal', '$patrimonio', '$informacao', '$local', '$chamado', '$destinatario', 'Aberto', '$created_at', '$tipo', 'n1')";
+    $sql = "INSERT INTO tickets (user_id, criador, nome, login, ramal, patrimonio, informacao, local, chamado, destinatario, status, created_at, tipo, secao) VALUES ('$userId',  '$criador', '$nome','$login', '$ramal', '$patrimonio', '$informacao', '$local', '$chamado', '$destinatario', 'Aberto', '$created_at', '$tipo', 'n2')";
     
     $resultado = $conexao->query($sql);
     if ($resultado === FALSE) {

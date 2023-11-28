@@ -18,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nome = $conexao->real_escape_string($data->nome);
     $email = $conexao->real_escape_string($data->email);
     $senha = $data->senha;
+    $cargo = $conexao->real_escape_string($data->cargo);
 
     $verificarEmail = "SELECT email FROM usuarios WHERE email = '$email'";
     $resultado = $conexao->query($verificarEmail);
@@ -27,13 +28,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else{
         $senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);
     
-        $sql = "INSERT INTO usuarios (nome, email, senha, supervisor) VALUES ('$nome','$email', '$senhaCriptografada', 0)";
+        $sql = "INSERT INTO usuarios (nome, email, senha, cargo) VALUES ('$nome','$email', '$senhaCriptografada', '$cargo')";
     
         if ($conexao->query($sql) === TRUE) {
             echo "Cadastro realizado com sucesso!";
             echo $nome;
             echo $email;
             echo $senha;
+            echo $cargo;
         } else {
             echo "Erro ao cadastrar: " . $conexao->error;
         }

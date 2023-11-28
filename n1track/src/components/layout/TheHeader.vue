@@ -65,7 +65,7 @@ const dados = ref(loginStore.dadosUsuario)
     </button>
   </div>
   <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
-    <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-cinza-100 dark:bg-gray-800 md:dark:bg-cinza-950 dark:border-gray-700">
+    <ul v-if="dados.cargo === 'n1'" class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-cinza-100 dark:bg-gray-800 md:dark:bg-cinza-950 dark:border-gray-700">
       <li>
         <RouterLink to="/tickets" class="dark:text-white font-roboto text-base font-medium leading-tight hover:text-azul-600" aria-current="page">Registrar</RouterLink>
       </li>

@@ -25,10 +25,10 @@ const router = createRouter({
       component: () => import('../views/TicketsView.vue'),
       beforeEnter: (to, from, next) =>{
         const store = useLoginStore()
-        if (store.autenticado) {
+        if (store.autenticado && store.dadosUsuario.cargo === 'n1') {
           next();
         } else {
-          next('/'); 
+          next('/chamados'); 
         }
       }
     },
@@ -51,7 +51,7 @@ const router = createRouter({
       component: () => import('../views/DesempenhoView.vue'),
       beforeEnter: (to, from, next) =>{
         const store = useLoginStore()
-        if (store.autenticado) {
+        if (store.autenticado && store.dadosUsuario.cargo === 'n1') {
           next();
         } else {
           next('/'); 
