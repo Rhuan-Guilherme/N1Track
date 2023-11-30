@@ -40,11 +40,11 @@ const store = useReturnUsuarioStore()
                                     <div class="font-normal text-cinza-500">{{ dados.email }}</div>
                                 </div>
                             </th>
-                            <td v-if="dados.supervisor == 0" class="px-6 py-4">
+                            <td v-if="dados.cargo === 'n1'" class="px-6 py-4">
                                 Analista N1
                             </td>
                             <td v-else class="px-6 py-4">
-                                Supervisor N1
+                                Analista N2
                             </td>
                           
                             <td class="px-6 py-4">

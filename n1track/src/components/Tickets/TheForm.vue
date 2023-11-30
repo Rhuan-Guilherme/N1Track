@@ -45,6 +45,26 @@ const store = useTicketStore()
                   <label class="label" for="local">Local</label>
                   <input v-model="store.local" id="local" class="input h-10" type="text">
                </div>
+               <div class="flex flex-col w-full">
+                  <label class="label" for="local">Local pré definido</label>
+
+                  <select v-model="store.local" :value="store.local" id="local" class="input h-10" >
+                        <option>Local Pré definido</option>
+                        <option value="Anexo 2A / 6° andar / Gabinete Ministra Cármen Lúcia">Gabinete Min. Cármem Lúcia</option>
+                        <option value="Anexo 2A / 6° andar / Gabinete Ministro Gilmar Mendes">Gabinete Min. Gilmar Mendes
+                        </option>
+                        <option value="Anexo 2A / 5° andar / Gabinete Ministro André Mendonça">Gabinete Min. André Mendonça
+                        </option>
+                        <option value="Anexo 2A / 4° andar / Gabinete Ministro Dias Toffoli">Gabinete Min. Dias Toffoli</option>
+                        <option value="Anexo 2A / 5° andar / Gabinete Ministro Nunes Marques">Gabinete Min. Nunes Marques
+                        </option>
+                        <option value="Anexo 2A / 4° andar / Gabinete Ministro Cristiano Zanin">Gabinete Min. Cristiano Zanin
+                        </option>
+                        <option value="Anexo 2A / 3° andar / Gabinete Ministro Luiz Fux">Gabinete Min. Luiz Fux</option>
+                        <option value="Anexo 2A / 3° andar / Gabinete Ministro Edson Fachin">Gabinete Min. Edson Fachin</option>
+                        <option value="Anexo 2A / 3° andar / Gabinete Ministro Alexandre de Moraes">Gabinete Min. Alexandre de Moraes</option>
+                </select>
+               </div>
             </div>
 
             <div>

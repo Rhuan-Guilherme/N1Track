@@ -32,9 +32,10 @@ const dados = ref(loginStore.dadosUsuario)
       </button>
       <!-- Dropdown menu -->
       <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
-        <div class="px-4 py-3">
+        <div class="px-4 py-3 flex flex-col gap-1">
           <span class="block text-sm text-cinza-950 dark:text-white">{{ dados.nome }}</span>
           <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{ dados.email }}</span>
+          <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">Analista {{ dados.cargo.toUpperCase() }}</span>
         </div>
         <ul class="py-2" aria-labelledby="user-menu-button">
 
