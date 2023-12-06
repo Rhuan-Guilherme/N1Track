@@ -40,7 +40,7 @@ const store = useTicketStore()
                </div>
             </div>
 
-            <div class="flex gap-3">
+            <div class="flex flex-col md:flex-row gap-3">
                <div class="flex flex-col w-full">
                   <label class="label" for="local">Local</label>
                   <input v-model="store.local" id="local" class="input h-10" type="text">
@@ -72,6 +72,10 @@ const store = useTicketStore()
             </div>
          </form>
       </div>
+   </div>
+
+   <div>
+      
    </div>
 </template>
 
