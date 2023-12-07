@@ -6,7 +6,6 @@ import { ref, onMounted } from 'vue'
 const loginSotre = useLoginStore()
 const dadosUsu = ref(loginSotre.dadosUsuario)
 const store = useTicketStore()
-
 const storeSelect = useSelectStore()
 </script>
 

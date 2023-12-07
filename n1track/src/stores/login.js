@@ -43,7 +43,6 @@ export const useLoginStore = defineStore('login', () => {
 
           dadosUsuario.value = response.data
           loading.value = true
-          console.log(response.data);
         } catch (error) {
            console.error("erro ao cadastrar: ", error)
         } finally{

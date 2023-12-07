@@ -1,14 +1,9 @@
 <script setup>
 import { useReturnN2Store } from '@/stores/returnTicketN2'
-import { useUpdateStore } from '@/stores/updateTicket'
-import { useLoginStore } from '@/stores/login';
-import { useOptionStore } from '@/stores/optionsTicket'
-import { ref, onMounted } from 'vue'
 import { initFlowbite } from 'flowbite'
 import Chamado from './cardsOption/TheChamado.vue';
-import Tag from '../bedges/TagTickets.vue';
-import CopyNotify from '../bedges/CopyNotify.vue';
 import ModalEdit from './ModalEdit.vue'
+import { ref, onMounted } from 'vue'
 
 
 
@@ -16,16 +11,9 @@ onMounted(() => {
     initFlowbite();
 })
 
-
-const OptionStore = useOptionStore()
-const loginSotre = useLoginStore()
-const updateTicket = useUpdateStore()
 const store = useReturnN2Store()
 
 store.fetchUserData()
-
-
-const dadosUsu = ref(loginSotre.dadosUsuario)
 
 </script>
 
@@ -61,7 +49,7 @@ const dadosUsu = ref(loginSotre.dadosUsuario)
                         />
                     </div>
                     <div class="bg-cinza-800 h-[1px] "></div>
-                    <div class="text-center border rounded-md border-cinza-700 p-1 bg-cinza-900 font-semibold">Chamado encaminhado ao helpdesk</div>
+                    <div class="text-center border rounded-md border-cinza-700 p-1 dark:bg-cinza-900 font-semibold">Chamado encaminhado ao helpdesk</div>
                 </div>
             </div>
 

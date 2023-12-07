@@ -15,8 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = $conexao->real_escape_string($data->email);
     $senha = $data->senha;
 
-    // Consulta SQL para verificar as credenciais do usuário
-    $sql = "SELECT * FROM usuarios WHERE email = '$email'";
+    $sql = "SELECT * FROM usuarios WHERE email = '$email' AND autorizado = 'sim'";
     $result = $conexao->query($sql);
 
     if ($result->num_rows > 0) {
@@ -25,14 +24,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
        
         if (password_verify($senha, $senhaHash)) {
-
-            $response = [
-                "id" => $row["id"],
-                "nome" => $row["nome"],
-                "email" => $row["email"],
-                "cargo" => $row["cargo"],
-            ];
-            echo json_encode($response);
+            if ($row["autorizado"] === 'sim'){
+                $response = [
+                    "id" => $row["id"],
+                    "nome" => $row["nome"],
+                    "email" => $row["email"],
+                    "cargo" => $row["cargo"],
+                    "autorizado" => $row["autorizado"]
+                ];
+                echo json_encode($response);
+            } else {
+                echo "Usuário não autorizado!";
+            }
         } else {
             echo "E-mail ou senha inválidos!";
         }
