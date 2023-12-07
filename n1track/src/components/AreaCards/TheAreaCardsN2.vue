@@ -34,24 +34,16 @@ const dadosUsu = ref(loginSotre.dadosUsuario)
         
         <div v-for="dados in store.userData" :key="dados.id" :class="{ 'ativado': dados.status == 'Fechado' }"
             class="fundoCard ">
-
-            <button  @click="OptionStore.deleteTicket(dados.id)" v-if="dados.status == 'Aberto' && dadosUsu.cargo === 'n2'" class="absolute inline-flex items-center justify-center w-auto px-1  font-bold text-whiterounded-md top-2 right-2 dark:bg-[#303030] bg-cinza-200 border dark:border-cinza-700 border-cinza-300 rounded-md hover:scale-105 hover:bg-red-600 hover:text-white dark:text-cinza-100 text-cinza-700 dark:hover:bg-red-600 dark:hover:text-white">
-                <span class="material-symbols-outlined text-base">close</span>
-            </button>
-
             <div :class="{ 'ativoDentro': dados.status == 'Fechado' }">
                 <div  class="flex flex-col gap-3">
                     <div class="flex flex-col gap-2">
-                        <div class="text-xs dark:text-cinza-200 font-semibold">
-                            {{ dados.created_at }}
-                        </div>
-                        <div class="flex ">Criador por {{ dados.criador }}</div>
+                        <div class="flex text-sm text-cinza-400">Criador por {{ dados.criador }}</div>
                         <div class="flex items-center gap-2">
                             <div class="flex ">{{ dados.nome }} - {{ dados.ramal }}</div>
                             <div>
                                 <div class="specChamado w-auto px-2 h-5 text-[12px] flex items-center justify-center gap-2 font-bold">
-                                    <div class="bolChamado w-2 h-2 rounded-full " :class="{ 'econdeAtivo': status == 'Fechado' }"></div> 
-                                    <span class="text-[#a9d1b3]">Chamado N2</span>
+                                    <div class="bolChamado  w-2 h-2 rounded-full " :class="{ 'econdeAtivo': status == 'Fechado' }"></div> 
+                                    <span class="dark:text-[#a9d1b3] text-green-900">Chamado N2</span>
                                 </div>
                             </div>
                             
@@ -68,14 +60,12 @@ const dadosUsu = ref(loginSotre.dadosUsuario)
                             :patrimonio="dados.patrimonio"
                         />
                     </div>
-
-                    <div :class="{ 'esconder': dados.status == 'Fechado' }" class="bg-cinza-800 h-[1px] "></div>
+                    <div class="bg-cinza-800 h-[1px] "></div>
+                    <div class="text-center border rounded-md border-cinza-700 p-1 bg-cinza-900 font-semibold">Chamado encaminhado ao helpdesk</div>
                 </div>
             </div>
 
-            <div class="flex gap-2 justify-center fundoOptionCards p-2 mt-3 " :class="{ 'esconder': dados.status == 'Fechado' }">
-                <button  @click="updateTicket.openEditModal(dados)" type="button" class="optionButton ">Editar</button>
-            </div>
+            
 
         </div>
     </div>

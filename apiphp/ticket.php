@@ -38,6 +38,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "Dados adicionados no banco";
     }
 
+    if($secao === 'n2'){
+        ini_set( 'display_errors', 1 );
+        error_reporting( E_ALL );
+        $from = "atendimento@n1track.com";
+        $to = "rhuan23032004@gmail.com";
+        $subject = "Chamado N2 - $criador";
+        $message = "Prezados, Sr(a). $nome entrou em contato $informacao
+        \nNome: $nome
+        \nLogin: $login
+        \nRamal: $ramal
+        \nLocal: $local
+        \nPatrimônio: $patrimonio
+        ";
+        $headers = "From:" . $from;
+        mail($to,$subject,$message, $headers);
+        echo "The email message was sent.";
+    }
+
 }
 
 $conexao->close();

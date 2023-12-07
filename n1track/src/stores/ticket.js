@@ -3,7 +3,9 @@ import { defineStore } from 'pinia'
 import  axios  from  'axios' ;
 import { useLoginStore } from './login';
 import { useReturnStore } from '@/stores/returnTickets'
+import { useReturnN2Store } from '@/stores/returnTicketN2'
 const returnStore = useReturnStore()
+const returnN2Store = useReturnN2Store()
 const loginSotre = useLoginStore()
 
 export const useTicketStore = defineStore('ticket', () => {
@@ -65,6 +67,7 @@ export const useTicketStore = defineStore('ticket', () => {
            console.error("erro ao cadastrar: ", error)
         }finally {
           returnStore.fetchUserData(loginSotre.dadosUsuario.id)
+          returnN2Store.fetchUserData()
         }
     };
 

@@ -3,6 +3,8 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 import { useLoginStore } from './login';
 import { useReturnStore } from '@/stores/returnTickets'
+import { useReturnN2Store } from '@/stores/returnTicketN2'
+const returnN2Store = useReturnN2Store()
 const returnStore = useReturnStore()
 const loginSotre = useLoginStore()
 
@@ -40,6 +42,7 @@ export const useUpdateStore = defineStore('update', () => {
         } finally {
             isEditing.value = false;
             returnStore.fetchUserData(loginSotre.dadosUsuario.id)
+            returnN2Store.fetchUserData()
         }
     }
 

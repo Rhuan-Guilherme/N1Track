@@ -4,6 +4,8 @@ import { defineStore } from 'pinia'
 import { useLoginStore } from './login';
 import { useReturnStore } from '@/stores/returnTickets'
 import { useFiltroStore } from './filtroTicket';
+import { useReturnN2Store } from '@/stores/returnTicketN2'
+const returnN2Store = useReturnN2Store()
 const filtroStore = useFiltroStore()
 const returnStore = useReturnStore()
 const loginSotre = useLoginStore()
@@ -21,6 +23,7 @@ export const useOptionStore = defineStore('option', () => {
             console.log(data.message); 
             returnStore.fetchUserData(loginSotre.dadosUsuario.id)
             filtroStore.fetchUserData(loginSotre.dadosUsuario.id)
+            returnN2Store.fetchUserData()
           })
           .catch(error => {
             console.error('Erro:', error);
@@ -34,6 +37,7 @@ export const useOptionStore = defineStore('option', () => {
         .then(response => {
             returnStore.fetchUserData(loginSotre.dadosUsuario.id)
             filtroStore.fetchUserData(loginSotre.dadosUsuario.id)
+            returnN2Store.fetchUserData()
             if (response.data.success) {
             console.log("Sucesso", response.data)
             } else {
@@ -52,6 +56,7 @@ export const useOptionStore = defineStore('option', () => {
         .then(response => {
             returnStore.fetchUserData(loginSotre.dadosUsuario.id)
             filtroStore.fetchUserData(loginSotre.dadosUsuario.id)
+            returnN2Store.fetchUserData()
             if (response.data.success) {
             console.log("Sucesso", response.data)
             } else {

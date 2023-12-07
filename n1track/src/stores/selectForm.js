@@ -26,6 +26,13 @@ export const useSelectStore = defineStore('select', () => {
   }
 
   
+  const vizualizacao = ref(false)
 
-  return { estado, chamado, reiteracao, transferencia, queda }
+  function toogleView(){
+    vizualizacao.value = !vizualizacao.value
+  }
+
+  
+
+  return { estado, chamado, reiteracao, transferencia, queda, vizualizacao, toogleView }
 })
