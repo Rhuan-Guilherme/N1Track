@@ -36,6 +36,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             echo $email;
             echo $senha;
             echo $cargo;
+
+            ini_set( 'display_errors', 1 );
+            error_reporting( E_ALL );
+            $from = "atendimento@n1track.com";
+            $to = "rhuan23032004@gmail.com";
+            $subject = "N1track - Conta nova";
+            $message = "O usuário $nome acabou de se cadastrar no N1track com o e-mail: $email. Liberar acesso: https://n1track.com/aprovacao/admin.php";
+            $headers = "From:" . $from;
+            mail($to,$subject,$message, $headers);
+            echo "The email message was sent.";
         } else {
             echo "Erro ao cadastrar: " . $conexao->error;
         }

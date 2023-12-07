@@ -27,7 +27,7 @@ store.fetchUserData()
                     <div class="flex flex-col gap-2">
                         <div class="flex text-sm text-cinza-400">Criador por {{ dados.criador }}</div>
                         <div class="flex items-center gap-2">
-                            <div class="flex ">{{ dados.nome }} - {{ dados.ramal }}</div>
+                            <div class="flex ">{{ dados.nome.split(' ')[0] }} - {{ dados.ramal }}</div>
                             <div>
                                 <div class="specChamado w-auto px-2 h-5 text-[12px] flex items-center justify-center gap-2 font-bold">
                                     <div class="bolChamado  w-2 h-2 rounded-full " :class="{ 'econdeAtivo': status == 'Fechado' }"></div> 

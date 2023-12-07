@@ -13,7 +13,7 @@ let props = defineProps({
 </script>
 
 <template>
-    <p class="">Prezados, Sr(a). {{ nome }} entrou em contato {{ informacao }}</p>
+    <p class="">Prezados, Sr(a). {{ nome.split(' ')[0] }} entrou em contato {{ informacao }}</p>
     <p>Nome: {{ nome }}</p>
     <p>Login: {{ login }}</p>
     <p>Ramal: {{ ramal }}</p>
