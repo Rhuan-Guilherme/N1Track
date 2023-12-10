@@ -22,7 +22,7 @@ const loginStore = useLoginStore();
           </div>
           <div>
             <input v-model="loginStore.senha" type="password" placeholder="Senha" class="input" :class="{ 'notification': loginStore.notification == true }">
-            <p v-if="loginStore.notification" class="mt-4 text-sm text-center text-cinza-300">E-mail ou senha inválidos! Não tem cadastro? <span @click="Switch.toggle"  class="text-azul-600 underline ml-1 cursor-pointer">Cadastre-se</span></p>
+            <p v-if="loginStore.notification" class="mt-4 text-sm  text-cinza-300">E-mail ou senha inválidos! <a href="https://n1track.com/senha/recuperacao.html" class="text-azul-600 underline ml-1 cursor-pointer">Esqueceu sua senha?</a></p>
           </div>
           <div>
             <button type="submit" class="h-14 w-40 bg-gradient-to-t from-[#0449A4] to-[#006EFF] rounded-full text-lg text-cinza-100 font-bold">
