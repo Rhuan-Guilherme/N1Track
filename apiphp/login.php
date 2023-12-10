@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = $conexao->real_escape_string($data->email);
     $senha = $data->senha;
 
-    $sql = "SELECT * FROM usuarios WHERE email = '$email' AND autorizado = 'sim'";
+    $sql = "SELECT * FROM usuarios WHERE email = '$email'";
     $result = $conexao->query($sql);
 
     if ($result->num_rows > 0) {

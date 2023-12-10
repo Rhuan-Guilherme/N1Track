@@ -11,6 +11,7 @@ export const useLoginStore = defineStore('login', () => {
     const senha = ref('')
     const autenticado = ref(false)
     const dadosUsuario = ref(null)
+    const contaAnalise = ref(false)
 
     if (localStorage.getItem('autenticado')) {
       autenticado.value = JSON.parse(localStorage.getItem('autenticado'))
@@ -27,18 +28,22 @@ export const useLoginStore = defineStore('login', () => {
             senha: senha.value
           })
           
+          console.log(response.data);
           email.value = ""
           senha.value = ""
 
-          if(response.data != 'E-mail ou senha inválidos!'){
+          if(response.data === 'E-mail ou senha inválidos!'){
+            autenticado.value = false
+            notification.value = true
+          } else if(response.data === 'Usuário não autorizado!'){
+            autenticado.value = false
+            contaAnalise.value = true
+          } else{
             notification.value = false
             localStorage.setItem('autenticado', JSON.stringify(true))
             localStorage.setItem('dadosUsuario', JSON.stringify(response.data))
             router.push({ name: 'tickets' });
             autenticado.value = true
-          } else{
-            autenticado.value = false
-            notification.value = true
           }
 
           dadosUsuario.value = response.data
@@ -60,5 +65,5 @@ export const useLoginStore = defineStore('login', () => {
     
   
 
-  return { logaUsuario, email, senha, dadosUsuario, autenticado, fazLogout, loading, notification }
+  return { logaUsuario, email, senha, dadosUsuario, autenticado, fazLogout, loading, notification, contaAnalise }
 })

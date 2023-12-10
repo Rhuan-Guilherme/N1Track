@@ -25,7 +25,7 @@ store.fetchUserData()
             <div :class="{ 'ativoDentro': dados.status == 'Fechado' }">
                 <div  class="flex flex-col gap-3">
                     <div class="flex flex-col gap-2">
-                        <div class="flex text-sm text-cinza-400">Criador por {{ dados.criador }}</div>
+                        <div class="flex text-sm text-cinza-400">Criador por {{ dados.criador.split(' ')[0] }}</div>
                         <div class="flex items-center gap-2">
                             <div class="flex ">{{ dados.nome.split(' ')[0] }} - {{ dados.ramal }}</div>
                             <div>
