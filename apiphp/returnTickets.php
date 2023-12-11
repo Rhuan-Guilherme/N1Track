@@ -12,7 +12,7 @@ if ($conexao->connect_error) {
 $user_id = isset($_GET['user_id']) ? $_GET['user_id'] : '';
 
 if (!empty($user_id)) {
-    $sql = "SELECT * FROM tickets WHERE user_id = $user_id ORDER BY id DESC";
+    $sql = "SELECT * FROM tickets WHERE user_id = $user_id ORDER BY id DESC LIMIT 40";
 
     $result = $conexao->query($sql);
 
