@@ -12,7 +12,7 @@ import Queda from './cardsOption/TheQueda.vue'
 import Tag from '../bedges/TagTickets.vue';
 import CopyNotify from '../bedges/CopyNotify.vue';
 import ModalEdit from './ModalEdit.vue'
-
+import { useCloneStore } from '@/stores/cloneTicket'
 
 onMounted(() => {
     initFlowbite();
@@ -23,6 +23,7 @@ const OptionStore = useOptionStore()
 const loginSotre = useLoginStore()
 const updateTicket = useUpdateStore()
 const store = useReturnStore()
+const clone = useCloneStore()
 
 store.fetchUserData(loginSotre.dadosUsuario.id)
 
@@ -45,8 +46,12 @@ store.fetchUserData(loginSotre.dadosUsuario.id)
                 <span class="material-symbols-outlined">done</span>
             </button>
 
-            <button @click="OptionStore.deleteTicket(dados.id)" v-if="dados.status == 'Aberto'" class="absolute inline-flex items-center justify-center w-auto px-1  font-bold text-whiterounded-md top-2 right-2 dark:bg-[#303030] bg-cinza-200 border dark:border-cinza-700 border-cinza-300 rounded-md hover:scale-105 hover:bg-red-600 hover:text-white dark:text-cinza-100 text-cinza-700 dark:hover:bg-red-600 dark:hover:text-white">
+            <button @click="OptionStore.deleteTicket(dados.id)" v-if="dados.status == 'Aberto'" class="absolute inline-flex items-center justify-center w-auto px-1 font-bold text-whiterounded-md top-2 right-2 dark:bg-[#303030] bg-cinza-200 border dark:border-cinza-700 border-cinza-300 rounded-md hover:scale-105 hover:bg-red-600 hover:text-white dark:text-cinza-100 text-cinza-700 dark:hover:bg-red-600 dark:hover:text-white">
                 <span class="material-symbols-outlined text-base">close</span>
+            </button>
+
+            <button @click="clone.cloneFecth(dados)" v-if="dados.status == 'Aberto'" class="absolute inline-flex items-center justify-center w-auto px-1 font-bold text-whiterounded-md top-2 right-10 dark:bg-[#303030] bg-cinza-200 border dark:border-cinza-700 border-cinza-300 rounded-md hover:scale-105 hover:bg-red-600 hover:text-white dark:text-cinza-100 text-cinza-700 dark:hover:bg-red-600 dark:hover:text-white">
+                <span class="material-symbols-outlined text-base">Repeat</span>
             </button>
 
             
