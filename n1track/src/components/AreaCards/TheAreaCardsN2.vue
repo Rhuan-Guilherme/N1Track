@@ -18,7 +18,7 @@ store.fetchUserData()
 </script>
 
 <template>
-    <div class="fundo w-11/12 h-auto p-3 flex flex-wrap items-center justify-center gap-3 ">
+    <!-- <div class="fundo w-11/12 h-auto p-3 flex flex-wrap items-center justify-center gap-3 ">
         
         <div v-for="dados in store.userData" :key="dados.id" :class="{ 'ativado': dados.status == 'Fechado' }"
             class="fundoCard ">
@@ -58,7 +58,7 @@ store.fetchUserData()
         </div>
     </div>
 
-   <ModalEdit />
+   <ModalEdit /> -->
 
 </template>
 

@@ -14,7 +14,7 @@ const dadosUsu = ref(loginSotre.dadosUsuario)
 
 <template>
    <Navbar />
-   <main class="max-w-screen-xl flex flex-col items-center justify-between mx-auto p-4 mt-3 ">
+   <!-- <main class="max-w-screen-xl flex flex-col items-center justify-between mx-auto p-4 mt-3 ">
       <div class="w-3/7">
          <SelectForm />
       </div>
@@ -34,7 +34,14 @@ const dadosUsu = ref(loginSotre.dadosUsuario)
 
    <section class="flex justify-center mt-7 mb-7">
       <AreaCardsN2 />
-   </section>
+   </section> -->
+
+
+   <div class="flex justify-center items-center w-full md:h-96 ">
+      <div class="md:w-11/12 dark:md:bg-fundo  p-5 rounded-lg">
+         <p class="dark:text-gray-100 text-[24px] leading-[40px]">Infelizmente, devido às políticas de segurança do Supremo, o e-mail que costumávamos utilizar para o encaminhamento de chamados foi bloqueado. Estamos trabalhando para criar uma nova forma de abertura de chamados de segundo nível, onde os tickets serão registrados e encaminhados à fila da equipe de primeiro nível. Pedimos desculpas por qualquer inconveniente e agradecemos pela compreensão enquanto implementamos essas mudanças para garantir a eficiência e segurança do processo.</p>
+      </div>
+   </div>
     
 </template>
 

@@ -7,22 +7,18 @@ export const useSelectStore = defineStore('select', () => {
 
   const chamado = () =>{
     estado.value = 'chamado'
-    console.log(estado.value);
   }
 
   const reiteracao = () =>{
     estado.value = 'reiteracao'
-    console.log(estado.value);
   }
 
   const transferencia = () =>{
     estado.value = 'transferencia'
-    console.log(estado.value);
   }
 
   const queda = () =>{
     estado.value = 'queda'
-    console.log(estado.value);
   }
 
   

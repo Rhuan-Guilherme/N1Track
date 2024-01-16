@@ -57,6 +57,19 @@ const router = createRouter({
           next('/'); 
         }
       }
+    },
+    {
+      path: '/organograma',
+      name: 'organograma',
+      component: () => import('../views/OrganogramaView.vue'),
+      beforeEnter: (to, from, next) =>{
+        const store = useLoginStore()
+        if (store.autenticado && store.dadosUsuario.cargo === 'n1') {
+          next();
+        } else {
+          next('/'); 
+        }
+      }
     }
   ]
 })

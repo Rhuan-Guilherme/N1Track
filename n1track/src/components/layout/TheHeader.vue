@@ -74,6 +74,9 @@ const dados = ref(loginStore.dadosUsuario)
         <RouterLink to="/desempenho" class="dark:text-white font-roboto text-base font-medium leading-tight hover:text-azul-600">Desempenho</RouterLink>
       </li>
       <li>
+        <RouterLink to="/organograma" class="dark:text-white font-roboto text-base font-medium leading-tight hover:text-azul-600">Organograma</RouterLink>
+      </li>
+      <li>
         <RouterLink to="/chamados" class="dark:text-white font-roboto text-base font-medium leading-tight hover:text-azul-600">Chamados N2</RouterLink>
       </li>
 

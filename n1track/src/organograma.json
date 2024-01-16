@@ -1,0 +1,305 @@
+[
+  {
+    "area": "TRIBUNAL PLENO",
+    "sub": [
+      {}
+    ]
+  },
+  {
+    "area": "PRIMEIRA TURMA",
+    "sub": [
+      {}
+    ]
+  },
+  {
+    "area": "SEGUNDA TURMA",
+    "sub": [
+      {}
+    ]
+  },
+  {
+    "area": "GABINETE DOS MINISTROS",
+    "sub": [
+      {
+        "item": "MINISRO ALEXANDRE DE MORAES"
+      },
+      {
+        "item": "MINISTRA CÁRMEN LÚCIA"
+      },
+      {
+        "item": "MINISTRO CRISTIANO ZANIN"
+      },
+      {
+        "item": "MINISTRO DIAS TOFFOLI"
+      },
+      {
+        "item": "MINISTRO EDSON FACHIN"
+      },
+      {
+        "item": "MINISTRO GILMAR MENDES"
+      },
+      {
+        "item": "MINISTRO LUIZ FUX"
+      },
+      {
+        "item": "MINISTRO NUNES MARQUES"
+      },
+      {
+        "item": "MINISTRO ROBERTO BARROSO"
+      }
+    ]
+  },
+  {
+    "area": "GABINETE DA PRESIDÊNCIA (GPR)",
+    "sub": [
+      {
+        "item": "Assessoria de Assuntos Internacionais (AIN)"
+      },
+      {
+        "item": "Assessoria de Articulação Parlamentar (ARP)"
+      },
+      {
+        "item": "Assessoria de Cerimonial (ACE)"
+      }
+    ]
+  },
+  {
+    "area": "SECRETARIA-GERAL DA PRESIDÊNCIA (SG)",
+    "sub": [
+      {
+        "item": "Assessoria do Plenário (APL)"
+      },
+      {
+        "item": "Assessoria Processual (ASP)"
+      },
+      {
+        "item": "Assessoria de Análise de Recursos (ARE) (NR3"
+      }
+    ]
+  },
+  {
+    "area": "SECRETARIA DE GESTÃO ESTRATÉGICA (SGE)",
+    "sub": [
+      {
+        "item": "Escritório de Gestão da Estratégia (EGES)"
+      },
+      {
+        "item": "Escritório de Gestão de Projetos Estratégicos (EGEP)"
+      }
+    ]
+  },
+  {
+    "area": "SECRETARIA JUDICIÁRIA (SEJ)",
+    "sub": [
+      {
+        "item": "Coordenadoria de Processamento Inicial (CPIN)"
+      },
+      {
+        "item": "Coordenadoria de Processos Criminais (CPCR)"
+      },
+      {
+        "item": "Coordenadoria de Processamento Final (CFIN)"
+      }
+    ]
+  },
+  {
+    "area": "SECRETARIA DE ALTOS ESTUDOS, PESQUISAS E GESTÃO DA INFORMAÇÃO (SAE)",
+    "sub": [
+      {
+        "item": "Coordenadoria de Biblioteca (CBIB)"
+      },
+      {
+        "item": "Coordenadoria de Pesquisas Judiciárias (COPJ)"
+      },
+      {
+        "item": "Coordenadoria de Difusão da Informação (CODI)"
+      },
+      {
+        "item": "Coordenadoria de Gestão da Informação, Memória Institucional e Museu (CGIM)"
+      }
+    ]
+  },
+  {
+    "area": "SECRETARIA DE COMUNICAÇÃO SOCIAL (SCO)",
+    "sub": [
+      {
+        "item": "Coordenadoria de Serviços e Infraestrutura da TV e Rádio Justiça (CSTR)"
+      },
+      {
+        "item": "Coordenadoria de Multimeios (COMU)"
+      },
+      {
+        "item": "Núcleo da Atendimento a Gabinetes e Projetos Especiais (NAGPE)"
+      }
+    ]
+  },
+  {
+    "area": "SECRETARIA DE GESTÃO DE PRECEDENTES (SPR)",
+    "sub": [
+      {
+        "item": "Coordenadoria de Recebimento e Admissibilidade Recursal (CORA)"
+      },
+      {
+        "item": "Coordenadoria de Jurisprudência (COJU)"
+      },
+      {
+        "item": "Coordenadoria de Integração Institucional (CINT)"
+      },
+      {
+        "item": "Núcleo de Gerenciamento de Precedentes (NUGEP)"
+      }
+    ]
+  },
+  {
+    "area": "ASSESSORIA DE APOIO À JURISDIÇÃO (AAJ)",
+    "sub": [
+      {
+        "item": "Núcleo de Processos Estruturais e Complexos (NUPEC)"
+      },
+      {
+        "item": "Núcleo de Solução Consensual de Conflitos (NUSOL)"
+      },
+      {
+        "item": "Núcleo de Análise de Dados e Estatística (NUADE)"
+      }
+    ]
+  },
+  {
+    "area": "SECRETARIA DE RELAÇÕES COM A SOCIEDADE (SRS)",
+    "sub": [
+      {
+        "item": "Coordenadoria de Integridade Digital (CIND)"
+      },
+      {
+        "item": "Coordenadoria de Combate à Desinformação (CCOD)"
+      },
+      {
+        "item": "Coordenadoria de Sustentabilidade, Acessibilidade e ODS (CODS)"
+      }
+    ]
+  },
+  {
+    "area": "SECRETARIA DO TRIBUNAL",
+    "sub": [
+      {
+        "item": "Gabinete do Diretor-Geral (GDG)"
+      },
+      {
+        "item": "Assessoria Jurídica (AJU)"
+      },
+      {
+        "item": "Assessoria de Apoio à Governança e Conformidade (AGC)"
+      }
+    ]
+  },
+  {
+    "area": "Secretaria de Orçamento, Finanças e Contratações (SOC)",
+    "sub": [
+      {
+        "item": "Coordenadoria de Orçamento e Finanças (COFI)"
+      },
+      {
+        "item": "Comissão Permanente de Licitação (CPL)"
+      },
+      {
+        "item": "Coordenadoria de Planejamento das Contratações (CODS)"
+      },
+      {
+        "item": "Coordenadoria de Gestão das Contratações (CGEC)"
+      },
+      {
+        "item": "Coordenadoria de Articulação Financeira e de Contratações (CAFC)"
+      }
+    ]
+  },
+  {
+    "area": "SECRETARIA DE GESTÃO DE PESSOAS (SGP)",
+    "sub": [
+      {
+        "item": "Central de Atendimento ao Servidor (CATS)"
+      },
+      {
+        "item": "Coordenadoria de Registros Funcionais e Pagamento (CRFP)"
+      },
+      {
+        "item": "Coordenadoria de Desenvolvimento de Pessoas (CDPE) (NR)"
+      },
+      {
+        "item": "Coordenadoria de Gestão do STF-Med (CMED)"
+      }
+    ]
+  },
+  {
+    "area": "SECRETARIA DE TECNOLOGIA E INOVAÇÃO (STI)",
+    "sub": [
+      {
+        "item": "Coordenadoria de Soluções do STF Digital"
+      },
+      {
+        "item": "Coordenadoria de Soluções de Software (CSSO)"
+      },
+      {
+        "item": "Coordenadoria de Infraestrutura Tecnológica (CITI)"
+      },
+      {
+        "item": "Núcleo de Apoio aos Sistemas Judiciais (NASJU)"
+      },
+      {
+        "item": "Coordenadoria de Relacionamento e Central de Serviços (CRCS)"
+      },
+      {
+        "item": "Núcleo de Inteligência Artificial e Ciência de Dados (NIAC)"
+      },
+      {
+        "item": "Coordenadoria de Segurança Cibernética (CSEC)"
+      }
+    ]
+  },
+  {
+    "area": "SECRETARIA DE SEGURANÇA (SEG)",
+    "sub": [
+      {
+        "item": "Coordenadoria de Segurança de Dignitários (CDIG)"
+      },
+      {
+        "item": "Coordenadoria de Segurança Institucional (CSIT)"
+      },
+      {
+        "item": "Núcleo de Inteligência (INTEL)"
+      }
+    ]
+  },
+  {
+    "area": "SECRETARIA DE SERVIÇOS INTEGRADOS DE SAÚDE (SIS)"
+  },
+  {
+    "area": "SECRETARIA DE ADMINISTRAÇÃO DE SERVIÇOS E GESTÃO PREDIAL (SAP)",
+    "sub": [
+      {
+        "item": "Coordenadoria de Serviços e Logística (CSEL)"
+      },
+      {
+        "item": "Coordenadoria de Arquitetura, Engenharia e Manutenção (CAEM)"
+      }
+    ]
+  },
+  {
+    "area": "AUDITORIA INTERNA (AUDI)",
+    "sub": [
+      {
+        "item": "Coordenadoria de Auditoria em Governança e Finanças (CGOF)"
+      },
+      {
+        "item": "Coordenadoria de Auditoria em Pessoal e Contratações (CPEC)"
+      }
+    ]
+  },
+  {
+    "area": "OUVIDORIA (OUVI)",
+    "sub": [
+      {
+        "item": "Ouvidoria da Mulher (OUVI-M)"
+      }
+    ]
+  }
+]
