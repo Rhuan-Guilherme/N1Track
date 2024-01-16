@@ -4,6 +4,7 @@ import  axios  from  'axios' ;
 import { useLoginStore } from './login';
 import { useReturnStore } from '@/stores/returnTickets'
 import { useReturnN2Store } from '@/stores/returnTicketN2'
+import vips from '../vips.json'
 const returnStore = useReturnStore()
 const returnN2Store = useReturnN2Store()
 const loginSotre = useLoginStore()
@@ -23,9 +24,31 @@ export const useTicketStore = defineStore('ticket', () => {
     const secao = ref('')
     const retorno = ref()
     const dateTime = ref()
+    const vip = ref()
+    
+    const vipsFilter = () => {
+      const termo = login.value.toLowerCase()
+      const filtro = vips.some((item) => {
+        if(termo.length > 1){
+          return item.nome.toLowerCase().includes(termo);
+        }
+      })
+
+      return filtro
+    }
+
     
 
     const cadastraTicket = async (tipoc) => {
+      const vipsFiltered = vipsFilter(); 
+      if(vipsFiltered) {
+        console.log(vipsFiltered);
+        console.log('sim');
+        vip.value = 'sim'
+      } else{
+        console.log('nao');
+        vip.value = 'nao'
+      }
       const now = new Date();
       const dia = now.getDate();
       const mes = now.getMonth() + 1;
@@ -49,8 +72,8 @@ export const useTicketStore = defineStore('ticket', () => {
             criador: loginSotre.dadosUsuario.nome,
             created_at: dateTime.value,
             tipo: tipoc,
-            secao: loginSotre.dadosUsuario.cargo
-            
+            secao: loginSotre.dadosUsuario.cargo,
+            vip: vip.value
           })
     
           retorno.value = response.data
