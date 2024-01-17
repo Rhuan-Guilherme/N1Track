@@ -1,31 +1,40 @@
 <script setup>
 let props = defineProps({
     tipo: String,
-    status: String
+    status: String,
+    vip: String
 })
 
 </script>
 
 
 <template>
-     <div v-if="tipo == 'chamado'" class="specChamado w-auto px-2 h-5 text-[12px] flex items-center justify-center gap-2 font-bold" :class="{ 'econdeAtivo': status == 'Fechado' }">
+     <div v-if="tipo == 'chamado' && vip == 'nao'" class="specChamado w-auto px-2 h-5 text-[12px] flex items-center justify-center gap-2 font-bold" :class="{ 'econdeAtivo': status == 'Fechado' }">
         <div class="bolChamado efeitoPulse w-2 h-2 rounded-full " :class="{ 'econdeAtivo': status == 'Fechado' }"></div> 
         <span>Chamado</span>
     </div>
 
-     <div v-if="tipo == 'reiteracao'" class="specReiteracao w-auto px-2 h-5 text-[12px] flex items-center justify-center gap-2 font-bold" :class="{ 'econdeAtivo': status == 'Fechado' }">
+     <div v-if="tipo == 'reiteracao'  && vip == 'nao'" class="specReiteracao w-auto px-2 h-5 text-[12px] flex items-center justify-center gap-2 font-bold" :class="{ 'econdeAtivo': status == 'Fechado' }">
         <div class="bolReiteracao efeitoPulse w-2 h-2 rounded-full " :class="{ 'econdeAtivo': status == 'Fechado' }"></div> 
         <span>Reiteração</span>
     </div>
 
-     <div v-if="tipo == 'queda'" class="specQueda w-auto px-2 h-5 text-[12px] flex items-center justify-center gap-2 font-bold" :class="{ 'econdeAtivo': status == 'Fechado' }">
+     <div v-if="tipo == 'queda'  && vip == 'nao'" class="specQueda w-auto px-2 h-5 text-[12px] flex items-center justify-center gap-2 font-bold" :class="{ 'econdeAtivo': status == 'Fechado' }">
         <div class="bolQueda efeitoPulse w-2 h-2 rounded-full " :class="{ 'econdeAtivo': status == 'Fechado' }"></div> 
         <span>Queda</span>
     </div>
 
-     <div v-if="tipo == 'transferencia'" class="specTransferencia  w-auto px-2 h-5 text-[12px] flex items-center justify-center gap-2 font-bold" :class="{ 'econdeAtivo': status == 'Fechado' }">
+     <div v-if="tipo == 'transferencia'  && vip == 'nao'" class="specTransferencia  w-auto px-2 h-5 text-[12px] flex items-center justify-center gap-2 font-bold" :class="{ 'econdeAtivo': status == 'Fechado' }">
         <div class="bolTransferencia efeitoPulse w-2 h-2 rounded-full " :class="{ 'econdeAtivo': status == 'Fechado' }"></div> 
         <span>Transferencia</span>
+    </div>
+
+     <div v-if="vip == 'sim'" class="specVip  w-auto px-2 h-5 text-[12px] flex items-center justify-center gap-2 font-bold" :class="{ 'econdeAtivo': status == 'Fechado' }">
+        <div class="bolVip efeitoPulse w-2 h-2 rounded-full " :class="{ 'econdeAtivo': status == 'Fechado' }"></div> 
+        <span class="flex items-center jus">
+            <span class="pr-1">VIP</span>
+            <span class="material-symbols-outlined text-sm">search</span>
+        </span>
     </div>
                             
 </template>
@@ -87,7 +96,17 @@ let props = defineProps({
     border-radius: 5px;
     border: 2px solid #5A78CE;
     background: rgba(90, 120, 206, 0.30);
-    color: ;
+}
+.bolVip{
+    background-color: #daa520;
+    filter: drop-shadow(0px 0px 2px #daa520);
+}
+
+.specVip{
+    @apply dark:text-[#fcd46d] text-[#7c6429];
+    border-radius: 5px;
+    border: 2px solid #daa520;
+    background: rgba(206, 206, 90, 0.3);
 }
 
 .econdeAtivo{

@@ -27,7 +27,7 @@ const clone = useCloneStore()
 
 store.fetchUserData(loginSotre.dadosUsuario.id)
 
-
+console.log(store.userData);
 
 </script>
 
@@ -37,11 +37,8 @@ store.fetchUserData(loginSotre.dadosUsuario.id)
     </div>
 
     
-    <div class="fundo w-11/12 h-auto p-3 flex flex-wrap items-center justify-center gap-3 ">
-        
-        <div v-for="dados in store.userData" :key="dados.id" :class="{ 'ativado': dados.status == 'Fechado' }"
-            class="fundoCard ">
-            
+    <div class="fundo w-11/12 h-auto p-3 flex flex-wrap items-center justify-center gap-3 " >
+        <div v-for="dados in store.userData" :key="dados.id" :class="{ 'ativado': dados.status == 'Fechado' }, {'vip': dados.vip == 'sim'}" class="fundoCard ">
             <button @click="OptionStore.ReturnConcluiTicket(dados.id)" v-if="dados.status == 'Fechado'" class="absolute inline-flex items-center justify-center w-6 h-6 font-bold hover:scale-125 text-white hover:bg-red-500  bg-green-500 rounded-md -top-2 -right-2 ">
                 <span class="material-symbols-outlined">done</span>
             </button>
@@ -68,6 +65,7 @@ store.fetchUserData(loginSotre.dadosUsuario.id)
                                 <Tag
                                     :tipo="dados.tipo"
                                     :status="dados.status"
+                                    :vip="dados.vip"
                                 />
                             </div>
                         </div>
@@ -148,11 +146,15 @@ store.fetchUserData(loginSotre.dadosUsuario.id)
 }
 
 .ativado {
-    @apply border border-green-500 dark:border-green-500  opacity-70 ; 
+    @apply !border !border-green-500 dark:border-green-500  opacity-70 ; 
 }
 
 .ativoDentro{
     @apply opacity-80;
+}
+
+.vip{
+    @apply border-[3px] dark:border-2 border-[#daa520] dark:border-[#daa520] ;
 }
 
 

@@ -27,9 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $chamado = $data->chamado;
     $created_at = $data->created_at;
     $destinatario = $data->destinatario;
+    $vip = $data->vip;
 
 
-    $sql = "INSERT INTO tickets (user_id, criador, nome, login, ramal, patrimonio, informacao, local, chamado, destinatario, status, created_at, tipo, secao) VALUES ('$userId',  '$criador', '$nome','$login', '$ramal', '$patrimonio', '$informacao', '$local', '$chamado', '$destinatario', 'Aberto', '$created_at', '$tipo', '$secao')";
+    $sql = "INSERT INTO tickets (user_id, criador, nome, login, ramal, patrimonio, informacao, local, chamado, destinatario, status, created_at, tipo, secao, vip) VALUES ('$userId',  '$criador', '$nome','$login', '$ramal', '$patrimonio', '$informacao', '$local', '$chamado', '$destinatario', 'Aberto', '$created_at', '$tipo', '$secao','$vip')";
     
     $resultado = $conexao->query($sql);
     if ($resultado === FALSE) {
