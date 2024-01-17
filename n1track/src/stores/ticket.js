@@ -4,10 +4,12 @@ import  axios  from  'axios' ;
 import { useLoginStore } from './login';
 import { useReturnStore } from '@/stores/returnTickets'
 import { useReturnN2Store } from '@/stores/returnTicketN2'
-import vips from '../vips.json'
+import { useReturnVipStore } from '@/stores/vips.js'
+const vi = useReturnVipStore()
 const returnStore = useReturnStore()
 const returnN2Store = useReturnN2Store()
 const loginSotre = useLoginStore()
+
 
 export const useTicketStore = defineStore('ticket', () => {
     const nome = ref('');
@@ -25,12 +27,17 @@ export const useTicketStore = defineStore('ticket', () => {
     const retorno = ref()
     const dateTime = ref()
     const vip = ref()
+
+    function vis() {
+      vi.fetchUserData()
+      return vi.userData
+    }
     
     const vipsFilter = () => {
       const termo = login.value.toLowerCase()
-      const filtro = vips.some((item) => {
+      const filtro = vis().some((item) => {
         if(termo.length > 1){
-          return item.nome.toLowerCase().includes(termo);
+          return item.login.toLowerCase().includes(termo);
         }
       })
 

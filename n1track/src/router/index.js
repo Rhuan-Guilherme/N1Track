@@ -70,6 +70,19 @@ const router = createRouter({
           next('/'); 
         }
       }
+    },
+    {
+      path: '/vips',
+      name: 'vips',
+      component: () => import('../views/CadastroVips.vue'),
+      beforeEnter: (to, from, next) =>{
+        const store = useLoginStore()
+        if (store.autenticado && store.dadosUsuario.cargo === 'n1') {
+          next();
+        } else {
+          next('/'); 
+        }
+      }
     }
   ]
 })
