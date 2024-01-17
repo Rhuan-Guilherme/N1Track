@@ -2,7 +2,7 @@
 import Navbar from '@/components/layout/TheHeader.vue'
 import { useReturnVipStore } from '@/stores/Vips.js';
 const vip = useReturnVipStore()
-
+vip.fetchUserData();
 </script>
 
 <template>

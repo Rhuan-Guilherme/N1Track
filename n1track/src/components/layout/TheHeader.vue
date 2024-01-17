@@ -3,6 +3,7 @@ import { useLoginStore } from '@/stores/login'
 import { ref, onMounted } from 'vue'
 import { initFlowbite } from 'flowbite'
 import { useDark, useToggle } from '@vueuse/core'
+import { RouterLink } from 'vue-router';
 
 onMounted(() => {
     initFlowbite();
@@ -38,17 +39,24 @@ const dados = ref(loginStore.dadosUsuario)
           <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">Analista {{ dados.cargo.toUpperCase() }}</span>
         </div>
         <ul class="py-2" aria-labelledby="user-menu-button">
-
+          <RouterLink to="/desempenho" class="cursor-pointer">
+            <div href="#" class="flex gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+              <div class="flex items-center justify-center">
+                <span class="material-symbols-outlined">equalizer</span>
+              </div>
+              <div>Desempenho</div>
+            </div>
+          </RouterLink>
           <li>
             <div @click="toggleDark()" href="#" class="cursor-pointer flex gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
               <div class="flex items-center justify-center">
-                <span v-if="isDark" class="material-symbols-outlined text-[1.2rem]"> light_mode</span>
+                <span v-if="isDark" class="material-symbols-outlined text-[1.2rem]">light_mode</span>
                 <span v-if="!isDark" class="material-symbols-outlined text-[1.2rem]">dark_mode</span>
               </div>
               <div>Tema {{ isDark ? "Claro" : "Escuro" }}</div>
             </div>
           </li>
-          <li>
+          <li class="cursor-pointer">
             <div @click="loginStore.fazLogout" href="#" class="flex gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
               <div class="flex items-center justify-center">
                 <span class="material-symbols-outlined text-[1.2rem]">logout</span>
@@ -56,6 +64,7 @@ const dados = ref(loginStore.dadosUsuario)
               <div>Sair</div>
             </div>
           </li>
+         
         </ul>
       </div>
       <button data-collapse-toggle="navbar-user" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-user" aria-expanded="false">
@@ -71,15 +80,14 @@ const dados = ref(loginStore.dadosUsuario)
         <RouterLink to="/tickets" class="dark:text-white font-roboto text-base font-medium leading-tight hover:text-azul-600" aria-current="page">Registrar</RouterLink>
       </li>
       <li>
-        <RouterLink to="/desempenho" class="dark:text-white font-roboto text-base font-medium leading-tight hover:text-azul-600">Desempenho</RouterLink>
-      </li>
-      <li>
         <RouterLink to="/organograma" class="dark:text-white font-roboto text-base font-medium leading-tight hover:text-azul-600">Organograma</RouterLink>
       </li>
       <li>
         <RouterLink to="/chamados" class="dark:text-white font-roboto text-base font-medium leading-tight hover:text-azul-600">Chamados N2</RouterLink>
       </li>
-
+      <li>
+        <RouterLink to="/vips" class="dark:text-white font-roboto text-base font-medium leading-tight hover:text-azul-600">VIPs</RouterLink>
+      </li>
     </ul>
   </div>
   </div>
