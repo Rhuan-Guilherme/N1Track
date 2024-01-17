@@ -5,7 +5,7 @@ import { useLoginStore } from './login';
 import { useReturnStore } from '@/stores/returnTickets'
 import { useReturnN2Store } from '@/stores/returnTicketN2'
 import { useReturnVipStore } from '@/stores/vips.js'
-const vi = useReturnVipStore()
+const vipStore = useReturnVipStore()
 const returnStore = useReturnStore()
 const returnN2Store = useReturnN2Store()
 const loginSotre = useLoginStore()
@@ -28,14 +28,14 @@ export const useTicketStore = defineStore('ticket', () => {
     const dateTime = ref()
     const vip = ref()
 
-    function vis() {
-      vi.fetchUserData()
-      return vi.userData
+    function vipValue() {
+      vipStore.fetchUserData()
+      return vipStore.userData
     }
     
-    const vipsFilter = () => {
-      const termo = login.value.toLowerCase()
-      const filtro = vis().some((item) => {
+    const vipsFilter = (login, vips) => {
+      const termo = login.toLowerCase()
+      const filtro = vips.some((item) => {
         if(termo.length > 1){
           return item.login.toLowerCase().includes(termo);
         }
@@ -44,16 +44,12 @@ export const useTicketStore = defineStore('ticket', () => {
       return filtro
     }
 
-    
-
     const cadastraTicket = async (tipoc) => {
-      const vipsFiltered = vipsFilter(); 
+      const vipsFiltered = vipsFilter(login.value, vipValue()); 
       if(vipsFiltered) {
         console.log(vipsFiltered);
-        console.log('sim');
         vip.value = 'sim'
       } else{
-        console.log('nao');
         vip.value = 'nao'
       }
       const now = new Date();
@@ -102,5 +98,5 @@ export const useTicketStore = defineStore('ticket', () => {
     };
 
 
-  return { cadastraTicket, retorno, nome, login, ramal, patrimonio, informacao, local, userId, tipo, destinatario, chamado, criador, secao  }
+  return { cadastraTicket, retorno, nome, login, ramal, patrimonio, informacao, local, userId, tipo, destinatario, chamado, criador, secao, vipsFilter  }
 })

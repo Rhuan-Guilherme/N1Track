@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $local = $data->local;
     $chamado = $data->chamado;
     $destinatario = $data->destinatario;
+    $vip = $data->vip;
 
     // Verifique se o chamado com o ID fornecido existe antes de tentar atualizar
     $verificar_chamado = "SELECT * FROM tickets WHERE id = $chamado_id";
@@ -41,7 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 informacao = '$informacao',
                 local = '$local',
                 chamado = '$chamado',
-                destinatario = '$destinatario'
+                destinatario = '$destinatario',
+                vip = '$vip'
                 WHERE id = $chamado_id";
 
             $resultado = $conexao->query($sql);
